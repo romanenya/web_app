@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список пользователей</title>
+</head>
+<body>
+
+    <style>
+        td{
+            margin: 10px;
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+
+    <a href="/">Главная страница</a>
+    <hr>
+
+    <table>
+        <tr class="boldtr">
+            <td><h3>ФИО</h3></td>
+            <td><h3>Текущая должность</h3></td>
+            <td><h3>Текущий отдел</h3></td>
+            <td><h3>Начало работы</h3></td>
+            <td><h3>Продолжительность работы</h3></td>
+        </tr>
+
+        {% for el in list %}
+            <tr>
+                <td>{{ el.surname }} {{ el.name }} {{ el.patronymic }}</td>
+                <td>{{ el.position }}</td>
+                <td>{{ el.subdivision }}</td>
+                <td>{{ el.start_date }}</td>
+                <td>{{ el.get_duration }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

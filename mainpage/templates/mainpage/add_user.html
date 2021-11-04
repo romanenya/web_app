@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить пользователя</title>
+</head>
+<body>
+
+    {% if error != '' %}
+        <script>
+            alert('{{ error }}');
+        </script>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <p>Имя: <input required name='name' type="text" class="name"></p>
+        <p>Фамилия: <input required name='surname' type="text" class="surname"></p>
+        <p>Отчество: <input required name='patronymic' type="text" class="patronymic"></p>
+        <p>Должность: <select required name="position" class="position">
+            {% for el in positions %}
+                <option value="{{ el.name }}">{{ el.name }}</option>
+            {% endfor %}
+        </select></p>
+        <p>Начало работы: <input required name='start_date' type="date" class="start_date"></p>
+        <p>Подразделение предприятия: <select name="subdivision" class="subdivision">
+            {% for el in subdivisions %}
+                <option value="{{ el.name }}">{{ el.name }}</option>
+            {% endfor %}
+        </select></p>
+
+        <p>Логин: <input required name='nickname' type="text" class="nickname"></p>
+        <p>Пароль: <input required name='password1' type="password" class="password1"></p>
+        <p>Подтверждение пароля: <input required name='password2' type="password" class="password2"></p>
+        <input type="submit">
+    </form>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наше предприятие</title>
+</head>
+<body>
+    <h1>Название предприятия</h1>
+    <p><b>О нас:</b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti inventore impedit nulla sequi laborum blanditiis itaque officia commodi. Odio voluptate expedita natus alias sunt veritatis laborum illo amet nobis assumenda!
+    Saepe provident dolorem id cumque quam. Porro, quidem, repudiandae iste laboriosam unde facere consectetur excepturi tenetur nemo nam suscipit est. At, autem? Quos, fuga! Odit quaerat neque ullam accusantium perferendis.
+    Itaque suscipit voluptas sapiente dignissimos optio modi? Ducimus aliquid, sed nulla quia ipsa tenetur rerum dolore eaque neque odio molestiae rem iste eius repellat provident tempora minima magni ex repellendus.
+    Tempore atque voluptates quas, quibusdam voluptatem error eos, labore officia autem veritatis doloremque minus odit soluta. Quos suscipit porro necessitatibus in corporis modi dolores repellendus illum, expedita dolorum sed quod.
+    Tempora, repellat earum. Esse neque a sunt numquam excepturi perspiciatis facere, dicta incidunt est impedit quisquam, vero, fuga minus qui unde saepe debitis. Minus dolore velit ut iure, esse nisi!
+    Consectetur et officia voluptatibus dolores nobis ad iure esse soluta omnis excepturi aperiam repellat ab, nam eius, asperiores hic tempora totam repellendus quis. Sequi qui libero, numquam similique veritatis animi?
+    Rerum, adipisci mollitia iste et similique ipsa labore quas commodi beatae deserunt doloribus error, aliquid voluptatibus quae quia rem nobis quis aut nesciunt incidunt harum accusamus! Minus at nobis suscipit?
+    Eligendi possimus nulla ratione eius minus. Modi nostrum, natus autem asperiores ea cupiditate eveniet temporibus sit ipsum eius, in, soluta quasi dolore commodi voluptatem! Soluta ipsam odio harum accusamus vel.
+    Debitis qui nulla illum voluptate iure aspernatur, dolore adipisci porro, assumenda in expedita blanditiis atque. Deserunt eligendi sint in modi labore. Sed expedita neque pariatur. Reprehenderit rem unde voluptatum dolores.
+    Impedit dignissimos maxime delectus rerum ullam, laborum incidunt sapiente esse modi tempora itaque, officiis magnam asperiores tenetur amet! Aut omnis numquam distinctio nemo itaque. Repellat culpa provident laborum omnis voluptates?</p>
+    <hr>
+    {% if not user.is_authenticated %}
+    <p>Вы не авторизированы</p>
+    <p><a href="/login">Войти</a></p>
+    {% else %}
+    Добро пожаловать, {{ user_name }} {{ user_surname }} <a href="/my_card">Моя карточка</a>
+    <p><a href="/logout">Выйти</a></p>
+    <hr>
+    {% if user.is_superuser %}
+        <p><a href="/admin">Админ панель</a> • <a href="/add_user">Добавить пользователя</a> • <a href="/add_subdivision">Добавить отдел</a></p>
+    {% endif %}
+    <p><a href="/positions">Справочник должностей</a></p>
+    <p><a href="/list_of_users">Список пользователей</a></p>
+    {% endif %}
+</body>
+</html>

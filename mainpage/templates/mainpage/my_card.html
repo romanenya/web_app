@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя карточка</title>
+</head>
+<body>
+
+    <style>
+        div{
+            border: 1px solid #878787;
+            border-radius: 40px;
+            text-align: center;
+        }
+    </style>
+
+    <div>
+        <h1>{{ me.user.username }}</h1>
+        <p>Имя: {{ me.name }}</p>
+        <p>Фамилия: {{ me.surname }}</p>
+        <p>Отчество: {{ me.patronymic }}</p>
+        <p>Должность: {{ me.position }}</p>
+        <p>Отдел: {{ me.subdivision }}</p>
+        <p>Начало работы: {{ me.start_date }}</p>
+    </div>
+    <br>
+    <a href="/">Главная страница</a>
+</body>
+</html>
