@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from datetime import datetime
 from django.contrib.auth.hashers import make_password
 
-# Декоратор для проверки аунтификации пользователя
+# Декоратор для проверки аутентификации пользователя
 def is_authenticated(func):
     def wrapper(request, *args, **kwargs):
         if request.user.is_authenticated:
@@ -52,8 +52,12 @@ def index(request):
     data = {}
 
     if request.user.is_authenticated:
-        data['user_name'] = DetailOfUser.objects.get(user=request.user).name
-        data['user_surname'] = DetailOfUser.objects.get(user=request.user).surname
+        try:
+            data['user_name'] = DetailOfUser.objects.get(user=request.user).name
+            data['user_surname'] = DetailOfUser.objects.get(user=request.user).surname
+        except:
+            data['user_name'] = {'username_name': 'No information!'}
+            data['user_surname'] = {'username_surname': 'No information!'}
 
     return render(request, 'mainpage/index.html', data)
 
@@ -128,9 +132,14 @@ def add_user(request):
 @is_authenticated
 def my_card(request):
     
-    data = {
-        'me': DetailOfUser.objects.get(user=request.user)
-    }
+    try:
+        data = {
+            'me': DetailOfUser.objects.get(user=request.user)
+        }
+    except:
+        data = {
+            'me': 'No information!'
+        }
 
     return render(request, 'mainpage/my_card.html', data)
 
